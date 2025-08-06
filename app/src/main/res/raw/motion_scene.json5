@@ -1,0 +1,32 @@
+{
+  ConstraintSets: {
+    start: {
+      image: {
+        width: 80,
+        height: 80,
+        start: ['parent', 'start', 16],
+        top: ['parent', 'top', 16]
+      }
+    },
+    end: {
+      image: {
+        width: 'spread',
+        height: 'spread',
+        centerX: 'parent',
+        centerY: 'parent'
+      },
+      background: {
+        width: 'spread',
+        height: 'spread',
+        alpha: 0.85
+      }
+    }
+  },
+  Transitions: {
+    default: {
+      from: 'start',
+      to: 'end',
+      pathMotionArc: 'none'
+    }
+  }
+}

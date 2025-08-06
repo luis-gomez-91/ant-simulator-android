@@ -3,6 +3,8 @@ package com.luis.ant.di
 import com.luis.ant.data.repository.HomeRepositoryImpl
 import com.luis.ant.domain.HomeRepository
 import com.luis.ant.screens.home.HomeService
+import com.luis.antsimulator.domain.QuestionRepository
+import com.luis.antsimulator.features.questions.QuestionService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,4 +41,14 @@ object NetworkModule {
     @Singleton
     fun provideHomeRepository(api: HomeService): HomeRepository =
         HomeRepositoryImpl(api)
+
+    @Provides
+    @Singleton
+    fun provideQuestionsService(retrofit: Retrofit): QuestionService =
+        retrofit.create(QuestionService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideQuestionRepository(api: QuestionService): QuestionRepository =
+        com.luis.antsimulator.data.repository.QuestionRepositoryImpl(api)
 }
